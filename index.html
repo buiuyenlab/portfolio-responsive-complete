@@ -1,184 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Developer Bùi Uyên — Portfolio</title>
+  <meta name="description" content="Portfolio cá nhân của Developer Bùi Uyên" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#60a5fa;
+      --accent2:#6ee7b7;
+    }
 
-    <!-- Boxicons -->
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Arial;
+      background:linear-gradient(180deg,#071226 0%,#081021 60%);
+      color:#e6eef8;
+    }
 
-    <title>Portfolio | Bùi Uyên</title>
+    .container{
+      max-width:1100px;
+      margin:40px auto;
+      padding:28px;
+    }
+
+    /* ===== HEADER ===== */
+    header{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      flex-wrap:wrap;
+    }
+
+    /* Avatar wrapper */
+    .avatar-wrap{
+      position:relative;
+      width:180px;
+      height:180px;
+      flex-shrink:0;
+    }
+
+    /* Blob xanh phía sau */
+    .avatar-bg{
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      filter:blur(0);
+      transform:scale(1.08);
+      z-index:0;
+    }
+
+    /* Avatar tròn */
+    .avatar{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      overflow:hidden;
+      background:#fff;
+      z-index:1;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    h1{
+      margin:0;
+      font-size:2.2rem;
+    }
+
+    .lead{
+      color:var(--muted);
+      margin:8px 0 14px;
+      max-width:520px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:10px;
+      background:var(--accent);
+      color:#042025;
+      font-weight:600;
+      text-decoration:none;
+      margin-right:8px;
+    }
+
+    .btn.alt{
+      background:transparent;
+      border:1px solid rgba(255,255,255,.15);
+      color:#e6eef8;
+    }
+
+    /* ===== GRID ===== */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:26px;
+      margin-top:40px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+      padding:20px;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(2,6,23,.6);
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .chip{
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .project{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      margin-top:10px;
+    }
+
+    footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* ===== MOBILE ===== */
+    @media(max-width:900px){
+      header{
+        justify-content:center;
+        text-align:center;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .avatar-wrap{
+        width:150px;
+        height:150px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+<div class="container">
 
-<!--===== HEADER =====-->
-<header class="l-header">
-    <nav class="nav bd-grid">
-        <div>
-            <a href="#home" class="nav__logo">Bùi Uyên</a>
-        </div>
-
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li class="nav__item"><a href="#home" class="nav__link active-link">Trang chủ</a></li>
-                <li class="nav__item"><a href="#about" class="nav__link">Giới thiệu</a></li>
-                <li class="nav__item"><a href="#skills" class="nav__link">Kỹ năng</a></li>
-                <li class="nav__item"><a href="#work" class="nav__link">Dự án</a></li>
-                <li class="nav__item"><a href="#contact" class="nav__link">Liên hệ</a></li>
-            </ul>
-        </div>
-
-        <div class="nav__toggle" id="nav-toggle">
-            <i class='bx bx-menu'></i>
-        </div>
-    </nav>
-</header>
-
-<main class="l-main">
-
-<!--===== HOME =====-->
-<section class="home bd-grid" id="home">
-    <div class="home__data">
-        <h1 class="home__title">
-            Xin chào,<br>
-            Mình là <span class="home__title-color">Bùi Uyên</span><br>
-            Sinh viên CNTT
-        </h1>
-
-        <a href="#contact" class="button">Liên hệ</a>
+  <header>
+    <div class="avatar-wrap">
+      <div class="avatar-bg"></div>
+      <div class="avatar">
+        <!-- 🔴 ĐỔI ẢNH Ở ĐÂY -->
+        <img src="assets/img/avatar.jpg" alt="Bùi Uyên">
+      </div>
     </div>
 
-    <div class="home__social">
-        <a href="https://github.com/buiuyenlab" class="home__social-icon" target="_blank">
-            <i class='bx bxl-github'></i>
-        </a>
-        <a href="#" class="home__social-icon">
-            <i class='bx bxl-facebook'></i>
-        </a>
-        <a href="#" class="home__social-icon">
-            <i class='bx bxl-linkedin'></i>
-        </a>
+    <div>
+      <h1>Xin chào, mình là <span style="color:var(--accent)">Bùi Uyên</span></h1>
+      <p class="lead">
+        Sinh viên CNTT · Frontend & Full-stack developer  
+        <br>Tạo trải nghiệm web hiện đại, mượt mà và thân thiện.
+      </p>
+
+      <a href="#contact" class="btn">Liên hệ</a>
+      <a href="#projects" class="btn alt">Dự án</a>
     </div>
+  </header>
 
-    <div class="home__img">
-        <svg class="home__blob" viewBox="0 0 479 467">
-            <mask id="mask0" mask-type="alpha">
-                <path d="M9.19 145.96C34.02 76.58 114.86 54.72 184.11 29.48C245.8 6.98 311.86 -14.95 370.73 14.14C431.2 44.02 467.94 107.5 477.19 174.31C485.89 237.22 454.93 294.37 416.5 344.95C373.74 401.24 326.06 462.8 255.44 466.18C179.41 469.83 111.55 422.13 65.15 361.8C17.48 299.81 -17.16 219.58 9.19 145.96Z"/>
-            </mask>
-            <g mask="url(#mask0)">
-                <path d="M9.19 145.96C34.02 76.58 114.86 54.72 184.11 29.48C245.8 6.98 311.86 -14.95 370.73 14.14C431.2 44.02 467.94 107.5 477.19 174.31C485.89 237.22 454.93 294.37 416.5 344.95C373.74 401.24 326.06 462.8 255.44 466.18C179.41 469.83 111.55 422.13 65.15 361.8C17.48 299.81 -17.16 219.58 9.19 145.96Z"/>
-                <!-- AVATAR -->
-                <image class="home__blob-img"
-                       x="50"
-                       y="60"
-                       href="assets/img/z5450603428582_97330105244715585d7cad091c6584ec.jpg"/>
-            </g>
-        </svg>
-    </div>
-</section>
+  <div class="grid">
+    <main>
+      <div class="card">
+        <h2>Về tôi</h2>
+        <p class="lead">
+          Tôi xây dựng các website hiện đại bằng HTML, CSS, JavaScript và React.
+          Quan tâm đến UI/UX, hiệu năng và khả năng mở rộng.
+        </p>
 
-<!--===== ABOUT =====-->
-<section class="about section" id="about">
-    <h2 class="section-title">Giới thiệu</h2>
-
-    <div class="about__container bd-grid">
-        <div class="about__img">
-            <img src="assets/img/z5450603428582_97330105244715585d7cad091c6584ec.jpg" alt="avatar">
+        <div class="skills">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Node.js</span>
         </div>
+      </div>
 
-        <div>
-            <h2 class="about__subtitle">Mình là Bùi Uyên</h2>
-            <p class="about__text">
-                Mình là sinh viên ngành Công nghệ thông tin, đang học về lập trình web,
-                GitHub Pages và các công nghệ frontend cơ bản.
-            </p>
+      <div id="projects" class="card" style="margin-top:20px">
+        <h2>Dự án</h2>
+
+        <div class="project">
+          <div>
+            <strong>Portfolio cá nhân</strong>
+            <div class="lead">Website giới thiệu bản thân</div>
+          </div>
+          <a class="btn" href="#">Xem</a>
         </div>
-    </div>
-</section>
+      </div>
+    </main>
 
-<!--===== SKILLS =====-->
-<section class="skills section" id="skills">
-    <h2 class="section-title">Kỹ năng</h2>
+    <aside>
+      <div class="card">
+        <h3>Thông tin</h3>
+        <p class="lead">Hà Nội, Việt Nam</p>
+        <p class="lead">Email: hello@buiuyen.dev</p>
+      </div>
 
-    <div class="skills__container bd-grid">
-        <div>
-            <h2 class="skills__subtitle">Kỹ năng chuyên môn</h2>
+      <div id="contact" class="card" style="margin-top:20px">
+        <h3>Liên hệ</h3>
+        <a class="btn" href="mailto:hello@buiuyen.dev">Gửi email</a>
+      </div>
+    </aside>
+  </div>
 
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bxl-html5 skills__icon'></i>
-                    <span class="skills__name">HTML</span>
-                </div>
-                <div class="skills__bar skills__html"></div>
-                <span class="skills__percentage">80%</span>
-            </div>
+  <footer>
+    © 2025 Bùi Uyên · Portfolio cá nhân
+  </footer>
 
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bxl-css3 skills__icon'></i>
-                    <span class="skills__name">CSS</span>
-                </div>
-                <div class="skills__bar skills__css"></div>
-                <span class="skills__percentage">70%</span>
-            </div>
-
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bxl-javascript skills__icon'></i>
-                    <span class="skills__name">JavaScript</span>
-                </div>
-                <div class="skills__bar skills__js"></div>
-                <span class="skills__percentage">60%</span>
-            </div>
-        </div>
-
-        <div>
-            <img src="assets/img/work3.jpg" alt="" class="skills__img">
-        </div>
-    </div>
-</section>
-
-<!--===== WORK =====-->
-<section class="work section" id="work">
-    <h2 class="section-title">Dự án</h2>
-
-    <div class="work__container bd-grid">
-        <a href="#" class="work__img"><img src="assets/img/work1.jpg" alt=""></a>
-        <a href="#" class="work__img"><img src="assets/img/work2.jpg" alt=""></a>
-        <a href="#" class="work__img"><img src="assets/img/work3.jpg" alt=""></a>
-    </div>
-</section>
-
-<!--===== CONTACT =====-->
-<section class="contact section" id="contact">
-    <h2 class="section-title">Liên hệ</h2>
-
-    <div class="contact__container bd-grid">
-        <form class="contact__form">
-            <input type="text" placeholder="Họ tên" class="contact__input">
-            <input type="email" placeholder="Email" class="contact__input">
-            <textarea placeholder="Nội dung" rows="8" class="contact__input"></textarea>
-            <input type="button" value="Gửi" class="contact__button button">
-        </form>
-    </div>
-</section>
-
-</main>
-
-<!--===== FOOTER =====-->
-<footer class="footer">
-    <p class="footer__title">Bùi Uyên</p>
-    <p class="footer__copy">&#169; 2025. Portfolio cá nhân</p>
-</footer>
-
-<!-- ScrollReveal -->
-<script src="https://unpkg.com/scrollreveal"></script>
-
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-
+</div>
 </body>
 </html>
